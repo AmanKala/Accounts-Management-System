@@ -9,29 +9,38 @@
   <body>
     <h1 class="text-center">Register</h1>
 
+    @if($errors)
+      @foreach($errors->all() as $err)
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-danger font-weight-bold">{{$err}}</li>
+      </ul>
+      @endforeach
+    @endif
+
     <form class="m-5" action="" method="POST">
         @csrf
         <div class="mb-3">
             <label for="exampleInputFirstName" class="form-label">First Name</label>
-            <input type="text" name="first_name" class="form-control" id="exampleInputFirstName" aria-describedby="FirstName">
+            <input type="text" name="first_name" class="form-control" id="exampleInputFirstName" aria-describedby="FirstName" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputFirstName" class="form-label">Last Name</label>
-            <input type="text" name="last_name" class="form-control" id="exampleInputFirstName" aria-describedby="emailHelp">
+            <input type="text" name="last_name" class="form-control" id="exampleInputFirstName" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email Id</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" required>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Re-enter Password</label>
-            <input type="password" name="re_enter_password" class="form-control" id="exampleInputPassword1">
+            <input type="password" name="re_enter_password" class="form-control" id="exampleInputPassword1" required>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary w-25">Register</button>
+        <a href="/login" class="btn btn-success w-25">LogIn</a>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   </body>

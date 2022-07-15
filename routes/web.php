@@ -14,13 +14,16 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [AuthController::class,'dashboard']);
 
-Route::post('/register',[AuthController::class,'store']);
+Route::post('register',[AuthController::class,'store']);
 Route::view('/register','register');
 
-Route::get('/login', function () {
-    return view('login');
-});
+Route::view('/login','login');
+Route::post('login',[AuthController::class,'check']);
+
+Route::get('/logout', [AuthController::class,'logout']);
+
+// Route::group(['middleware'=>['AuthCheck']],function(){
+    
+// });
