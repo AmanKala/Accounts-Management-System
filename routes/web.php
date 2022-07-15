@@ -24,6 +24,8 @@ Route::post('login',[AuthController::class,'check']);
 
 Route::get('/logout', [AuthController::class,'logout']);
 
+Route::get('users',[AuthController::class, 'show']);
+
 // Route::group(['middleware'=>['AuthCheck']],function(){
     
 // });

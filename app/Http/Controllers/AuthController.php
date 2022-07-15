@@ -68,4 +68,10 @@ class AuthController extends Controller
         $data = ['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))->first()];
         return view('/welcome',$data);
     }
+
+    function show()
+    {
+        $user_data = User::all();
+        return view('users', ['members' => $user_data]);
+    }
 }
