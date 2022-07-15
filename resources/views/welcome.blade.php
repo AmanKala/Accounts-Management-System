@@ -13,7 +13,7 @@
         <h4 class="bg-info text-white p-2 rounded"> Hey there! Welcome home, {{ $LoggedUserInfo['first_name'] }} {{ $LoggedUserInfo['last_name'] }} !</h4>
         <br>
         <a href="/logout" class="btn btn-danger w-25">Logout</a> 
-        <a href="" class="btn btn-primary w-25">User Listing</a>
+        <a href="/users" class="btn btn-primary w-25">User Listing</a>
     </div>
   </body>
 </html>

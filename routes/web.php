@@ -14,7 +14,6 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', [AuthController::class,'dashboard']);
 
 Route::post('register',[AuthController::class,'store']);
 Route::view('/register','register');
@@ -24,8 +23,8 @@ Route::post('login',[AuthController::class,'check']);
 
 Route::get('/logout', [AuthController::class,'logout']);
 
-Route::get('users',[AuthController::class, 'show']);
+Route::group(['middleware'=>['AuthCheck']],function(){
+    Route::get('/', [AuthController::class,'dashboard']);   
 
-// Route::group(['middleware'=>['AuthCheck']],function(){
-    
-// });
+    Route::get('users',[AuthController::class, 'show']);
+});

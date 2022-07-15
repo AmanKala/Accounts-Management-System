@@ -16,6 +16,10 @@ class AuthCheck
      */
     public function handle(Request $request, Closure $next)
     {
+        if(!session()->has('LoggedUser') && ($request->path() != '/login' && $request->path() != '/register') )
+        {
+            return redirect('/login')->with('fail',"You Must be Logged In");
+        }
         return $next($request);
     }
 }

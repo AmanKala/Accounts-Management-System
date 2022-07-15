@@ -34,7 +34,7 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    // Mutator
+    // Mutator to encrypt the password.
     public function setPasswordAttribute($password)
     {
         $this->attributes['password']=bcrypt($password);
