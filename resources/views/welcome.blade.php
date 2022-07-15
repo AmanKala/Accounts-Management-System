@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="container">
-        <h3 class="text-center m-5">Dashboard</h3>
+        <h3 class="text-center m-5">Welcome</h3>
         <br><br>
         <h4 class="bg-info text-white p-2 rounded"> Hey there! Welcome home, {{ $LoggedUserInfo['first_name'] }} {{ $LoggedUserInfo['last_name'] }} !</h4>
         <br>
