@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function store (Request $req)
+    // public function store (Request $req)
     {
         $req->validate([
             "first_name" => "required",
