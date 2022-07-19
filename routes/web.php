@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Requests\AuthRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +16,16 @@ use App\Http\Controllers\AuthController;
 */
 
 
-Route::post('register',[AuthController::class,'store']);
-Route::view('/register','register');
+Route::post('register',[AuthRequest::class,'store']);
+Route::view('/register','register')->name('register');
 
-Route::view('/login','login');
+Route::view('/login','login')->name('login');
 Route::post('login',[AuthController::class,'check']);
 
 Route::get('/logout', [AuthController::class,'logout']);
 
-Route::group(['middleware'=>['AuthCheck']],function(){
-    Route::get('/', [AuthController::class,'dashboard']);   
+Route::group(['middleware'=>['auth.check']],function(){
+    Route::get('/', [AuthController::class,'dashboard'])->name('/');   
 
-    Route::get('users',[AuthController::class, 'show']);
+    Route::get('users',[AuthController::class, 'show'])->name('users');
 });
