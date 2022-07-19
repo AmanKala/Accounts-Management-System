@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\AuthRequest;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    public function store (AuthRequest $req)
+    {
+        //To Ensure that the entered data follow the defined set of rules.
+        $req->validated();
+
+        // Saving the values in database.
+        User::create($req->all());
+        
+        return redirect()->route('login');
+    }
+
     public function check(Request $req)
     {
         // Validate Requests

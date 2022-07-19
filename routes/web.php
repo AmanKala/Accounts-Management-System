@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Requests\AuthRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +15,7 @@ use App\Http\Requests\AuthRequest;
 */
 
 
-Route::post('register',[AuthRequest::class,'store']);
+Route::post('register',[AuthController::class,'store']);
 Route::view('/register','register')->name('register');
 
 Route::view('/login','login')->name('login');
