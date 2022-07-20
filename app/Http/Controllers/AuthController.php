@@ -4,28 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\AuthRequest;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function store (Request $req)
+    public function store (AuthRequest $req)
     {
-        $req->validate([
-            "first_name" => "required",
-            "last_name" => "required",
-            "email" => "required|email",
-            "password" => "required|min:6",
-            "re_enter_password" => "required|same:password"
-        ]);
-
-        // Saving the values in database.
-        $user=new User;
-        $user->first_name=$req->first_name;
-        $user->last_name=$req->last_name; 
-        $user->email=$req->email;
-        $user->password=$req->password;
-        $user->save();
-        return redirect('login');
+        // Validate and Save the values in database.
+        User::create($req->validated());
+        
+        return redirect()->route('login');
     }
 
     public function check(Request $req)
@@ -37,19 +26,19 @@ class AuthController extends Controller
         ]);
 
         // Retrive the information from database.
-        $user_info = User::where('email','=',$req->email)->first();
+        $userInfo = User::where('email','=',$req->email)->first();
         
         // Login related functions to validate email and password.
-        if(!$user_info)
+        if(!$userInfo)
         {
             return back()->with('fail',"Email Not Found");
         }
         else
         {
-            if(Hash::check($req->password,$user_info->password))
+            if(Hash::check($req->password,$userInfo->password))
             {
-                $req->session()->put('LoggedUser',$user_info->id);
-                return redirect('/');
+                $req->session()->put('logged_user',$userInfo->id);
+                return redirect()->route('dashboard');
             }
             else
             {
@@ -60,17 +49,17 @@ class AuthController extends Controller
 
     function logout()
     {
-        if(session()->has('LoggedUser'))
+        if(session()->has('logged_user'))
         {
-            session()->pull('LoggedUser');
-            return redirect('login');
+            session()->pull('logged_user');
+            return redirect()->route('login');
         }
     }
 
     // View the data on welcome page.
     function dashboard()
     {
-        $data = ['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))->first()];
+        $data = ['LoggedUserInfo'=>User::where('id','=',session('logged_user'))->first()];
         return view('/welcome',$data);
     }
 

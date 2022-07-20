@@ -16,15 +16,15 @@ use App\Http\Controllers\AuthController;
 
 
 Route::post('register',[AuthController::class,'store']);
-Route::view('/register','register');
+Route::view('/register','register')->name('register');
 
-Route::view('/login','login');
+Route::view('/login','login')->name('login');
 Route::post('login',[AuthController::class,'check']);
 
 Route::get('/logout', [AuthController::class,'logout']);
 
-Route::group(['middleware'=>['AuthCheck']],function(){
-    Route::get('/', [AuthController::class,'dashboard']);   
+Route::group(['middleware'=>['auth.check']],function(){
+    Route::get('/', [AuthController::class,'dashboard'])->name('dashboard');   
 
-    Route::get('users',[AuthController::class, 'show']);
+    Route::get('users',[AuthController::class, 'show'])->name('users');
 });
