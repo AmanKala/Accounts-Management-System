@@ -11,11 +11,8 @@ class AuthController extends Controller
 {
     public function store (AuthRequest $req)
     {
-        //To Ensure that the entered data follow the defined set of rules.
-        $req->validated();
-
-        // Saving the values in database.
-        User::create($req->all());
+        // Validate and Save the values in database.
+        User::create($req->validated());
         
         return redirect()->route('login');
     }
@@ -41,7 +38,7 @@ class AuthController extends Controller
             if(Hash::check($req->password,$userInfo->password))
             {
                 $req->session()->put('logged_user',$userInfo->id);
-                return redirect()->route('/');
+                return redirect()->route('dashboard');
             }
             else
             {
