@@ -45,7 +45,7 @@
                     <td>
                         <a href={{"edit/".$member['id']}} class="btn btn-primary">Edit</a>
                         <a href={{"delete/".$member['id']}} class="btn btn-danger">Delete</a> 
-                        <a href="" class="btn btn-success">Generate Receipt</a>
+                        <a href={{"receipt/".$member['id']}} class="btn btn-success">Generate Receipt</a>
                     </td>
                 </tr>
             @endforeach

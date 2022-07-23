@@ -5,6 +5,7 @@ use App\Models\Transaction;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\TransactionRequest;
+use PDF;
 
 
 class TransactionController extends Controller
@@ -55,4 +56,18 @@ class TransactionController extends Controller
         $data->save();
         return redirect()->route('transactions');
     }
+
+    public function receipt ($id)
+    {
+        $data = Transaction::find($id);
+        $transaction_data = [
+            'data' => $data,
+        ];
+          
+        $pdf = PDF::loadView('receipt', $transaction_data);
+    
+        return $pdf->download('transaction.pdf');
+        // return view('receipt',['data'=>$data]);
+    }
+
 }
