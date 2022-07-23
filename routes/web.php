@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,21 @@ Route::post('login',[AuthController::class,'check']);
 
 Route::get('/logout', [AuthController::class,'logout']);
 
+Route::post('createtransaction',[TransactionController::class,'store']);
+
+Route::get('receipt/{id}', [TransactionController::class,'receipt']);
+
+
+Route::get('delete/{id}',[TransactionController::class, 'delete'])->name('delete');
+Route::get('edit/{id}',[TransactionController::class, 'edit'])->name('edit');
+Route::post('edit',[TransactionController::class, 'update'])->name('update');
+
 Route::group(['middleware'=>['auth.check']],function(){
     Route::get('/', [AuthController::class,'dashboard'])->name('dashboard');   
 
     Route::get('users',[AuthController::class, 'show'])->name('users');
+    
+    Route::view('/createtransaction','createTransaction')->name('create_transaction');
+
+    Route::get('transactions',[TransactionController::class, 'show'])->name('transactions');
 });

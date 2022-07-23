@@ -12,8 +12,11 @@
         <br><br>
         <h4 class="bg-info text-white p-2 rounded"> Hey there! Welcome home, {{ $LoggedUserInfo['first_name'] }} {{ $LoggedUserInfo['last_name'] }} !</h4>
         <br>
-        <a href="/logout" class="btn btn-danger w-25">Logout</a> 
-        <a href="/users" class="btn btn-primary w-25">User Listing</a>
+        <a href="/createtransaction" class="btn btn-success ">Create Transaction</a> 
+        <a href="/transactions" class="btn btn-primary ">Transaction Listing</a>
+        <a href="/users" class="btn btn-warning ">User Listing</a>
+        <a href="/logout" class="btn btn-danger ">Logout</a> 
+
     </div>
   </body>
 </html>
