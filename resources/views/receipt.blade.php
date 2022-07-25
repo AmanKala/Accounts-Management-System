@@ -45,7 +45,7 @@
 
         <div class="mb-3">
             <label class="">Total</label> &nbsp;&nbsp; 
-            <span>{{ $data['total'] }}</span>
+            <span>{{ $data['amount']*$data['quantity'] }}</span>
         </div>
 
         <div class="mb-3">

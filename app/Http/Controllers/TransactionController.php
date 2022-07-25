@@ -47,7 +47,6 @@ class TransactionController extends Controller
         $data->amount=$req->amount;
         $data->quantity=$req->quantity;
         $data->unit_name=$req->unit_name;
-        $data->total=$req->total;
         $data->type=$req->type;
         $data->status=$req->status;
         $data->utr=$req->utr;
@@ -67,7 +66,6 @@ class TransactionController extends Controller
         $pdf = PDF::loadView('receipt', $transaction_data);
     
         return $pdf->download('transaction.pdf');
-        // return view('receipt',['data'=>$data]);
     }
 
 }

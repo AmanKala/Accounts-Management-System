@@ -53,12 +53,6 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Total</label>
-            <input type="number" name="total" class="form-control" value="{{ old('total') }}" required>
-            <div class="text-danger">@error('total') {{ $message }} @enderror</div>
-        </div>
-
-        <div class="mb-3">
             <label class="form-label">Type</label>
             <select name="type" id="type" class="form-control">
                 <option value="revenue">Revenue</option>
@@ -79,7 +73,7 @@
 
         <div class="mb-3">
             <label class="form-label">UTR</label>
-            <input type="text" name="utr" class="form-control" value="{{ old('utr') }}" required>
+            <input type="text" name="utr" class="form-control" value="{{ old('utr') }}" >
             <div class="text-dange">@error('utr') {{ $message }} @enderror</div>
         </div>
 

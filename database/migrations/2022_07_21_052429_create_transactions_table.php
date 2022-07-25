@@ -21,7 +21,6 @@ class CreateTransactionsTable extends Migration
             $table->integer('amount');
             $table->integer('quantity');
             $table->string('unit_name');
-            $table->integer('total');
             $table->string('type');
             $table->string('status');
             $table->string('utr');

@@ -30,12 +30,11 @@ class TransactionRequest extends FormRequest
             'amount' => "required",
             'quantity' => "required",
             'unit_name' => "required",
-            'total' => "required",
             'type' => "required",
             'status' => "required",
-            'utr' => "required",
+            'utr' => "nullable",
             'project' => "required",                 
-            'comment' => "required"                 
+            'comment' => "nullable"                 
         ];
     }
 }

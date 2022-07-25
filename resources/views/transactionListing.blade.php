@@ -36,7 +36,7 @@
                     <td>{{$member['title']}}</td>
                     <td>{{$member['date']}}</td>
                     <td>{{$member['paid_by_to']}}</td>
-                    <td>{{$member['total']}}</td>
+                    <td>{{$member['amount']*$member['quantity']}}</td>
                     <td>{{$member['type']}}</td>
                     <td>{{$member['status']}}</td>
                     <td>{{$member['utr']}}</td>

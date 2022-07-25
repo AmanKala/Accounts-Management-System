@@ -22,7 +22,6 @@ class Transaction extends Model
         'amount',
         'quantity',
         'unit_name',
-        'total',
         'type',
         'status',
         'utr',
